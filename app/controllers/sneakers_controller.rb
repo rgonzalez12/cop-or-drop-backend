@@ -5,18 +5,18 @@ class SneakersController < ApplicationController
     def index
       @sneakers = Sneaker.all
             
-      render json: @sneakers.as_json(include: {sneakers: {only: [:name, :summary, :sneaker_id]}})
+      render json: @sneakers.as_json(include: {opinions: {only: [:name, :summary, :sneaker_id]}})
     end
     
     def show
-      render json: @sneaker.as_json(include: {sneakers: {only: [:name, :summary, :sneaker_id]}})
+      render json: @sneaker.as_json(include: {opinions: {only: [:name, :summary, :sneaker_id]}})
     end
     
     def create
       @sneaker = Sneaker.new(sneaker_params)
             
       if @sneaker.save
-        render json: @sneaker.as_json(include: {sneakers: {only: [:name, :summary, :sneaker_id]}})
+        render json: @sneaker.as_json(include: {opinions: {only: [:name, :summary, :sneaker_id]}})
       else
         render json: @sneaker.errors
       end
